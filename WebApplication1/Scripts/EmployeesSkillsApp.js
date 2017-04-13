@@ -82,21 +82,21 @@ var configFunction = function ($stateProvider, $httpProvider, $locationProvider)
                 }
             }
         })
-        .state('stateCreateSkill', {
-            url: '/createSkill',
-            views: {
-                "containerOne": {
-                    templateUrl: '/routesDemo/CreateSkill',
-                    controller: CreateSkillController
-                }
-            }
-        })
         .state('stateCreateEmployee', {
             url: '/createEmployee',
             views: {
                 "containerOne": {
                     templateUrl: '/routesDemo/CreateEmployee',
                     controller: CreateEmployeeController
+                }
+            }
+        })
+        .state('stateCreateSkill', {
+            url: '/createSkill',
+            views: {
+                "containerOne": {
+                    templateUrl: '/routesDemo/CreateSkill',
+                    controller: CreateSkillController
                 }
             }
         });

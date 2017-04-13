@@ -59,9 +59,19 @@ namespace WebApplication1
                 defaults: new { controller = "RoutesDemo", action = "CreateEmployee" });
 
             routes.MapRoute(
+                name: "employeetResult",
+                url: "routesDemo/EmployeeResult",
+                defaults: new { controller = "RoutesDemo", action = "EmployeeResult" });
+
+            routes.MapRoute(
                 name: "createSkill",
                 url: "RoutesDemo/CreateSkill",
                 defaults: new { controller = "RoutesDemo", action = "CreateSkill" });
+
+            routes.MapRoute(
+                name: "skillResult",
+                url: "routesDemo/SkillResult",
+                defaults: new { controller = "RoutesDemo", action = "SkillResult" });
 
             routes.MapRoute(
                 name: "read",

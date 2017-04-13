@@ -1,7 +1,7 @@
-﻿var CreateEmployeeController = function ($scope, $routeParams, $location, EmployeeFactory) {
+﻿var CreateEmployeeController = function ($scope, $stateParams, $location, EmployeeFactory) {
     $scope.employee = {
         name: "",
-        returnUrl: $routeParams.returnUrl,
+        returnUrl: $stateParams.returnUrl,
         creationFailure: false
     };
 
@@ -18,8 +18,18 @@
             } else {
                 $scope.employee.creationFailure = true;
             }
+
+            $scope.enableButton();
         });
+    }
+
+    $scope.disableButton = function () {
+        $scope.isDisabled = true;
+    }
+
+    $scope.enableButton = function () {
+        $scope.isDisabled = false;
     }
 }
 
-CreateEmployeeController.$inject = ['$scope', '$routeParams', '$location', 'EmployeeFactory'];
+CreateEmployeeController.$inject = ['$scope', '$stateParams', '$location', 'EmployeeFactory'];
