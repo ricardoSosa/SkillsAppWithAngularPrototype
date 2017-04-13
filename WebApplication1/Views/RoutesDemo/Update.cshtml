@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <p>
+            <label for="">Node to modify:</label>
+            <input type="text" id="name" ng-model="element.name" required />
+            <!---<label for="">Parent's name:</label>
+            <input type="text" id="name" ng-model="element.parent" required />-->
+            <input type="button" value="Update" ng-click="update()">
+        </p>
+
+        <div>
+            <ul>
+                <li ng-repeat="parents in parent">
+
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <input type="text" value="Search..." />
+        </div>
+    </div>
+</body>
+</html>
