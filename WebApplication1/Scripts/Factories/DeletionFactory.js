@@ -3,10 +3,8 @@
 
         var deferredObject = $q.defer();
 
-        $http.post(
-            '/RoutesDemo/DeleteResult', {
-                Name: name
-            }
+        $http.delete(
+            '/routesDemo/DeleteResult/' + name
         ).
         success(function (data) {
             if (data == "True") {

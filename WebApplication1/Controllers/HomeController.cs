@@ -103,7 +103,7 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpDelete]
         public ActionResult DeleteResult(string name)
         {
             SkillsService proxy = new SkillsService();

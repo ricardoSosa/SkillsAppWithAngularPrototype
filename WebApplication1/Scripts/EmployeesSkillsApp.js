@@ -99,6 +99,15 @@ var configFunction = function ($stateProvider, $httpProvider, $locationProvider)
                     controller: CreateSkillController
                 }
             }
+        })
+        .state('stateDelete', {
+            url: '/delete',
+            views: {
+                "containerOne": {
+                    templateUrl: '/routesDemo/Delete',
+                    controller: DeleteController
+                }
+            }
         });
 
         //.state('stateCreateEmployee', {

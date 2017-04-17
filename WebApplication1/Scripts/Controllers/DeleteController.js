@@ -1,7 +1,7 @@
-﻿var DeleteController = function ($scope, $routeParams, $location, DeletionFactory) {
+﻿var DeleteController = function ($scope, $stateParams, $location, DeletionFactory) {
     $scope.element = {
         name: "",
-        returnUrl: $routeParams.returnUrl,
+        returnUrl: $stateParams.returnUrl,
         deletionFailure: false
     };
 
@@ -17,8 +17,18 @@
             } else {
                 $scope.element.deletionFailure = true;
             }
+
+            $scope.enableButton();
         });
+    }
+
+    $scope.disableButton = function () {
+        $scope.isDisabled = true;
+    }
+
+    $scope.enableButton = function () {
+        $scope.isDisabled = false;
     }
 }
 
-DeleteController.$inject = ['$scope', '$routeParams', '$location', 'DeletionFactory'];
+DeleteController.$inject = ['$scope', '$stateParams', '$location', 'DeletionFactory'];

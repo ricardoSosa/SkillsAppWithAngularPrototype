@@ -59,7 +59,7 @@ namespace WebApplication1
                 defaults: new { controller = "RoutesDemo", action = "CreateEmployee" });
 
             routes.MapRoute(
-                name: "employeetResult",
+                name: "employeeResult",
                 url: "routesDemo/EmployeeResult",
                 defaults: new { controller = "RoutesDemo", action = "EmployeeResult" });
 
@@ -75,18 +75,23 @@ namespace WebApplication1
 
             routes.MapRoute(
                 name: "read",
-                url: "RoutesDemo/Read",
+                url: "routesDemo/Read",
                 defaults: new { controller = "RoutesDemo", action = "Read" });
 
             routes.MapRoute(
                 name: "update",
-                url: "RoutesDemo/Update",
+                url: "routesDemo/Update",
                 defaults: new { controller = "RoutesDemo", action = "Update" });
 
             routes.MapRoute(
                 name: "delete",
-                url: "RoutesDemo/Delete",
+                url: "routesDemo/Delete",
                 defaults: new { controller = "RoutesDemo", action = "Delete" });
+
+            routes.MapRoute(
+                name: "deleteResult",
+                url: "routesDemo/DeleteResult/{name}",
+                defaults: new { controller = "RoutesDemo", action = "DeleteResult", name = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Default",
