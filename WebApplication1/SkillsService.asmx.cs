@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Web.Script.Services;
+using System.Web.Script.Serialization;
 using Neo4jClient;
 
 namespace WebApplication1
@@ -116,31 +118,18 @@ namespace WebApplication1
         }
 
         [WebMethod]
-        public string read(string name, string element)
+        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string[] read(string name)
         {
-            string result = "";
+            string[] parentsList = graphClient.Cypher
+                     .Match("(child)-[:DERIVED_FROM]->(parent)")
+                     .Where("child.name = {name}")
+                     .WithParam("name", name)
+                     .Return(parent => parent.As<Project>().name)
+                     .Results.ToArray();
 
-            if (name != "")
-            {
-                Skill newSkill = new Skill(name);
-                graphClient.Cypher
-                    .Merge("(skill:Skill {name: {name}})")
-                    .OnCreate()
-                    .Set("skill = {newSkill}")
-                    .WithParams(new
-                    {
-                        name = newSkill.getName(),
-                        newSkill
-                    })
-                    .ExecuteWithoutResults();
-                result = "The skill has been created.";
-            }
-            else
-            {
-                result = "The skill doesn't exist.";
-            }
-
-            return result;
+            return parentsList;
+            //return new JavaScriptSerializer().Serialize(parentsList);
         }
 
         [WebMethod]
@@ -197,8 +186,6 @@ namespace WebApplication1
                     .WithParam("name", name)
                     .DetachDelete("n")
                     .ExecuteWithoutResults();
-
-                result = "The element has been created.";
             }
 
             return result;
@@ -207,6 +194,11 @@ namespace WebApplication1
         public class Project
         {
             public string name;
+
+            public Project()
+            {
+
+            }
 
             public Project(string name)
             {

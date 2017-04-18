@@ -11,25 +11,28 @@
 </head>
 <body>
     <div>
-        <p>
-            <label for="">Node to modify:</label>
-            <input type="text" id="name" ng-model="element.name" required />
-            <!---<label for="">Parent's name:</label>
-            <input type="text" id="name" ng-model="element.parent" required />-->
-            <input type="button" value="Update" ng-click="update()">
-        </p>
+        <div ng-controller="ReadController">
 
-        <div>
-            <ul>
-                <li ng-repeat="parents in parent">
-
-                </li>
-            </ul>
+            <p>
+                <label for="">Node to modify:</label>
+                <input type="text" id="name" ng-model="toUpdate.name" />
+                @*<label for="">Parent's name:</label>
+                <input type="text" id="name" ng-model="element.parent"/>*@
+                <input type="button" value="Select" ng-click="read('toUpdate')" /><br /><br />
+                <div>
+                    <input type="text" ng-model="parentToAdd.name" />
+                    <input type="button" value="Add parent" ng-click="update()" /><br /><br />
+                </div>
+                <label for="">Parents:</label>
+                <ul>
+                    <li ng-repeat="res in result.parents">
+                        <span><input type="button" value="Delete">{{res}}</span>
+                    </li>
+                </ul>
+            </p>
         </div>
 
-        <div>
-            <input type="text" value="Search..." />
-        </div>
-    </div>
+      </div>
+
 </body>
 </html>

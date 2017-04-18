@@ -1,25 +1,26 @@
-﻿var UpdateController = function ($scope, $routeParams, $location, UpdateFactory) {
-    $scope.element = {
+﻿var UpdateController = function ($scope, $stateParams, $location, UpdateFactory, ReadAndUpdate) {
+    $scope.parentToAdd = {
         name: "",
-        parent: "",
-        returnUrl: $routeParams.returnUrl,
+        returnUrl: $stateParams.returnUrl,
         updatingFailure: false
     };
 
     $scope.update = function () {
-        var result = UpdateFactory($scope.element.name, $scope.element.parent);
+        var result = UpdateFactory($scope.toUpdate.name, $scope.parentToAdd.name);
         result.then(function (result) {
             if (result.success) {
-                if ($scope.element.returnUrl !== undefined) {
+                if ($scope.parentToAdd.returnUrl !== undefined) {
                     $location.path('/routeOne');
                 } else {
-                    $location.path($scope.element.returnUrl);
+                    $location.path($scope.parentToAdd.returnUrl);
                 }
             } else {
-                $scope.element.updatingFailure = true;
+                $scope.parentToAdd.updatingFailure = true;
             }
         });
     }
+
+    $scope.toUpdate = ReadAndUpdate;
 }
 
-UpdateController.$inject = ['$scope', '$routeParams', '$location', 'UpdateFactory'];
+UpdateController.$inject = ['$scope', '$stateParams', '$location', 'UpdateFactory', 'ReadAndUpdate'];

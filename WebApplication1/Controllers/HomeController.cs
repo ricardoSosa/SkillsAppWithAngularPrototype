@@ -85,12 +85,20 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        [HttpGet]
+        public JsonResult ReadResult(string name)
+        {
+            SkillsService proxy = new SkillsService();
+            var parents = proxy.read(name);
+            return Json(parents, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Update()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPut]
         public ActionResult UpdateResult(string name, string parent)
         {
             SkillsService proxy = new SkillsService();

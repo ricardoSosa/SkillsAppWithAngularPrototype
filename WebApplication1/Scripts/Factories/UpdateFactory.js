@@ -3,7 +3,7 @@
 
         var deferredObject = $q.defer();
 
-        $http.post(
+        $http.put(
             '/RoutesDemo/UpdateResult', {
                 Name: name,
                 Parent: parent

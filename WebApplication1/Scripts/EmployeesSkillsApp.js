@@ -14,9 +14,13 @@ EmployeesSkillsApp.factory('RegistrationFactory', RegistrationFactory);
 EmployeesSkillsApp.factory('ProjectFactory', ProjectFactory);
 EmployeesSkillsApp.factory('EmployeeFactory', EmployeeFactory);
 EmployeesSkillsApp.factory('SkillFactory', SkillFactory);
-EmployeesSkillsApp.factory('DeletionFactory', DeletionFactory);
+EmployeesSkillsApp.factory('ReadFactory', ReadFactory);
 EmployeesSkillsApp.factory('UpdateFactory', UpdateFactory);
+EmployeesSkillsApp.factory('DeletionFactory', DeletionFactory);
 EmployeesSkillsApp.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
+EmployeesSkillsApp.factory('ReadAndUpdate', function () {
+    return { name: '' };
+});
 
 var configFunction = function ($stateProvider, $httpProvider, $locationProvider) {
 
@@ -97,6 +101,24 @@ var configFunction = function ($stateProvider, $httpProvider, $locationProvider)
                 "containerOne": {
                     templateUrl: '/routesDemo/CreateSkill',
                     controller: CreateSkillController
+                }
+            }
+        })
+        .state('stateRead', {
+            url: '/read',
+            views: {
+                "containerOne": {
+                    templateUrl: 'routesDemo/Read',
+                    controller: ReadController
+                }
+            }
+        })
+        .state('stateUpdate', {
+            url: '/update',
+            views: {
+                "containerOne": {
+                    templateUrl: 'routesDemo/Update',
+                    controller: UpdateController
                 }
             }
         })

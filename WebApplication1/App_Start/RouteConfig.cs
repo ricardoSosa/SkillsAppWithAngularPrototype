@@ -79,9 +79,19 @@ namespace WebApplication1
                 defaults: new { controller = "RoutesDemo", action = "Read" });
 
             routes.MapRoute(
+                name: "readResult",
+                url: "routesDemo/ReadResult/{name}",
+                defaults: new { controller = "RoutesDemo", action = "ReadResult", name = UrlParameter.Optional });
+
+            routes.MapRoute(
                 name: "update",
                 url: "routesDemo/Update",
                 defaults: new { controller = "RoutesDemo", action = "Update" });
+
+            routes.MapRoute(
+                name: "updateResult",
+                url: "routesDemo/UpdateResult",
+                defaults: new { controller = "RoutesDemo", action = "UpdateResult" });
 
             routes.MapRoute(
                 name: "delete",
